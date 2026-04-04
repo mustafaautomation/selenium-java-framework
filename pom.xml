@@ -19,7 +19,7 @@
         <selenium.version>4.27.0</selenium.version>
         <testng.version>7.10.2</testng.version>
         <webdrivermanager.version>5.9.2</webdrivermanager.version>
-        <allure.version>2.29.1</allure.version>
+        <allure.version>2.33.0</allure.version>
         <assertj.version>3.26.3</assertj.version>
         <maven-surefire.version>3.5.2</maven-surefire.version>
     </properties>

@@ -11,6 +11,13 @@
     <test name="Inventory Tests">
         <classes>
             <class name="com.quvantic.selenium.tests.inventory.InventoryTest"/>
+            <class name="com.quvantic.selenium.tests.inventory.SortingTest"/>
+        </classes>
+    </test>
+
+    <test name="Cart Tests">
+        <classes>
+            <class name="com.quvantic.selenium.tests.cart.CartTest"/>
         </classes>
     </test>
 

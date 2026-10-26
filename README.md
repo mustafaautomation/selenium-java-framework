@@ -2,8 +2,8 @@
 
 [![E2E Tests](https://github.com/mustafaautomation/selenium-java-framework/actions/workflows/e2e-tests.yml/badge.svg)](https://github.com/mustafaautomation/selenium-java-framework/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Java](https://img.shields.io/badge/Java-17-ED8B00.svg?logo=openjdk&logoColor=white)](https://openjdk.org)
-[![Selenium](https://img.shields.io/badge/Selenium-4.27-43B02A.svg?logo=selenium&logoColor=white)](https://www.selenium.dev)
+[![Java](https://img.shields.io/badge/Java-21-ED8B00.svg?logo=openjdk&logoColor=white)](https://openjdk.org)
+[![Selenium](https://img.shields.io/badge/Selenium-4.51-43B02A.svg?logo=selenium&logoColor=white)](https://www.selenium.dev)
 
 Selenium 4 + Java E2E test framework (portfolio project) with TestNG, Page Object Model and Allure reporting, running against the public SauceDemo site. Parallel execution with thread-safe WebDriver management; CI runs all tests headless and fails on any test failure.
 
@@ -27,6 +27,7 @@ Selenium 4 + Java E2E test framework (portfolio project) with TestNG, Page Objec
 ```bash
 git clone https://github.com/mustafaautomation/selenium-java-framework.git
 cd selenium-java-framework
+# Needs JDK 21+, Maven 3.9+ and Chrome (or Firefox); Selenium Manager fetches the driver
 
 # Run all tests (headless Chrome)
 mvn clean test
@@ -40,8 +41,8 @@ mvn test -Dheadless=false
 # Firefox
 mvn test -Dbrowser=firefox
 
-# Generate Allure report
-mvn allure:serve
+# Open the Allure report (needs the Allure CLI installed)
+allure serve target/allure-results
 ```
 
 ---
@@ -137,10 +138,11 @@ selenium-java-framework/
 
 | Tool | Purpose |
 |------|---------|
-| Selenium 4.27 | Browser automation |
-| TestNG 7.10 | Test runner with parallel + groups |
-| WebDriverManager | Automatic driver management |
-| Allure 2.29 | Rich HTML reporting |
+| Java 21 (LTS) | Language; CI also compiles on JDK 25 |
+| Selenium 4.51 | Browser automation |
+| TestNG 7.12 | Test runner with parallel + groups |
+| Selenium Manager | Driver resolution (built into Selenium, no extra library) |
+| Allure 2.35 | HTML reporting |
 | AssertJ | Fluent assertions |
 | Maven | Build + dependency management |
 

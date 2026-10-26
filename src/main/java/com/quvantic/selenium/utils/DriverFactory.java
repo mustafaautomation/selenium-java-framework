@@ -1,7 +1,6 @@
 package com.quvantic.selenium.utils;
 
 import com.quvantic.selenium.config.TestConfig;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -31,19 +30,19 @@ public final class DriverFactory {
         }
     }
 
+    // Drivers are resolved by Selenium Manager (built into Selenium 4.6+), so no
+    // separate driver-download library is needed.
     private static WebDriver createDriver() {
         String browser = TestConfig.getBrowser().toLowerCase();
         boolean headless = TestConfig.isHeadless();
 
         return switch (browser) {
             case "firefox" -> {
-                WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions options = new FirefoxOptions();
                 if (headless) options.addArguments("--headless");
                 yield new FirefoxDriver(options);
             }
             default -> {
-                WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 if (headless) options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
                 options.addArguments("--window-size=1920,1080");

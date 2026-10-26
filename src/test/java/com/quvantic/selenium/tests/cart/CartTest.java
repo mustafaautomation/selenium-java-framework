@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Feature("Cart")
 public class CartTest extends BaseTest {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void loginAndAddProducts() {
         loginAsStandardUser();
     }

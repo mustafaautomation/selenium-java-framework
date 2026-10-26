@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Feature("Login")
 public class LoginTest extends BaseTest {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void navigateToLogin() {
         loginPage.navigate();
     }

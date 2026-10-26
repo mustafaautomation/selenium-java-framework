@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Feature("Sorting")
 public class SortingTest extends BaseTest {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void login() {
         loginAsStandardUser();
     }

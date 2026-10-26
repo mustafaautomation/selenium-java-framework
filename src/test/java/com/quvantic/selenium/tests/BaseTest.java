@@ -15,7 +15,8 @@ public abstract class BaseTest {
     protected CartPage cartPage;
     protected CheckoutPage checkoutPage;
 
-    @BeforeMethod
+    // alwaysRun so the driver is still set up when running a subset with -Dgroups=smoke
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = DriverFactory.getDriver();
         loginPage = new LoginPage(driver);
@@ -24,7 +25,7 @@ public abstract class BaseTest {
         checkoutPage = new CheckoutPage(driver);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         DriverFactory.quitDriver();
     }

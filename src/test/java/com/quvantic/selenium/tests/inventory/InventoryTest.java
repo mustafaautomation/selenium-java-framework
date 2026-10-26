@@ -36,7 +36,10 @@ public class InventoryTest extends BaseTest {
     @Description("Removing product clears cart badge")
     public void removeProductFromCart() {
         inventoryPage.addToCartByName("Sauce Labs Bike Light");
+        assertThat(inventoryPage.getCartBadgeCount()).isEqualTo("1");
+
         inventoryPage.removeFromCartByName("Sauce Labs Bike Light");
+        assertThat(inventoryPage.getCartBadgeCount()).isEqualTo("0");
     }
 
     @Test(groups = "regression")

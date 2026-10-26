@@ -3,6 +3,7 @@ package com.quvantic.selenium.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -21,7 +22,14 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    /** The cart is rendered client-side; wait for its list before reading it. */
+    public void waitForLoad() {
+        wait.until(ExpectedConditions.urlContains("cart.html"));
+        waitForVisible(cartList);
+    }
+
     public int getItemCount() {
+        waitForLoad();
         return cartItems.size();
     }
 

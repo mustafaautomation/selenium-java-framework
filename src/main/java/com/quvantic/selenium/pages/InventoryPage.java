@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -41,21 +42,26 @@ public class InventoryPage extends BasePage {
     }
 
     public void addToCartByName(String productName) {
-        String buttonId = "add-to-cart-" + productName.toLowerCase().replace(" ", "-");
-        click(driver.findElement(By.cssSelector("[data-test='" + buttonId + "']")));
+        By add = productButton("add-to-cart-", productName);
+        wait.until(ExpectedConditions.elementToBeClickable(add)).click();
+        // The button re-renders as "Remove" once the item is in the cart; wait for that so the
+        // next action does not race the re-render.
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productButton("remove-", productName)));
     }
 
     public void removeFromCartByName(String productName) {
-        String buttonId = "remove-" + productName.toLowerCase().replace(" ", "-");
-        click(driver.findElement(By.cssSelector("[data-test='" + buttonId + "']")));
+        By remove = productButton("remove-", productName);
+        wait.until(ExpectedConditions.elementToBeClickable(remove)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productButton("add-to-cart-", productName)));
+    }
+
+    private By productButton(String prefix, String productName) {
+        return By.cssSelector("[data-test='" + prefix + productName.toLowerCase().replace(" ", "-") + "']");
     }
 
     public String getCartBadgeCount() {
-        try {
-            return cartBadge.getText();
-        } catch (Exception e) {
-            return "0";
-        }
+        List<WebElement> badges = driver.findElements(By.cssSelector(".shopping_cart_badge"));
+        return badges.isEmpty() ? "0" : badges.get(0).getText();
     }
 
     public void openCart() {

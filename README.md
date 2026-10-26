@@ -5,7 +5,7 @@
 [![Java](https://img.shields.io/badge/Java-17-ED8B00.svg?logo=openjdk&logoColor=white)](https://openjdk.org)
 [![Selenium](https://img.shields.io/badge/Selenium-4.27-43B02A.svg?logo=selenium&logoColor=white)](https://www.selenium.dev)
 
-Enterprise Selenium 4 E2E testing framework with TestNG, Page Object Model, and Allure reporting. Parallel execution, thread-safe WebDriver management, and CI/CD ready.
+Selenium 4 + Java E2E test framework (portfolio project) with TestNG, Page Object Model and Allure reporting, running against the public SauceDemo site. Parallel execution with thread-safe WebDriver management; CI runs all tests headless and fails on any test failure.
 
 ---
 
@@ -13,10 +13,12 @@ Enterprise Selenium 4 E2E testing framework with TestNG, Page Object Model, and 
 
 | Suite | Tests | Group |
 |-------|-------|-------|
-| Login | 5 | smoke |
-| Inventory | 5 | regression |
+| Login | 5 | smoke (4), regression (1) |
+| Inventory | 5 | smoke (1), regression |
+| Sorting | 5 | regression |
+| Cart | 4 | smoke (1), regression |
 | Checkout | 3 | regression |
-| **Total** | **13** | |
+| **Total** | **22** | 6 smoke |
 
 ---
 
@@ -121,6 +123,8 @@ selenium-java-framework/
 │   ├── BaseTest.java                 # Setup/teardown
 │   ├── auth/LoginTest.java           # 5 tests
 │   ├── inventory/InventoryTest.java  # 5 tests
+│   ├── inventory/SortingTest.java    # 5 tests
+│   ├── cart/CartTest.java            # 4 tests
 │   └── checkout/CheckoutTest.java    # 3 tests
 ├── src/test/resources/testng.xml     # TestNG suite config
 ├── pom.xml

@@ -49,7 +49,6 @@ jobs:
 
       - name: Run tests
         run: mvn test -Dheadless=true
-        continue-on-error: true
 
       - name: Upload results
         if: always()
